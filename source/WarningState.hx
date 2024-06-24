@@ -24,14 +24,6 @@ import io.newgrounds.NG;
 import lime.app.Application;
 import openfl.Assets;
 
-#if windows
-import Discord.DiscordClient;
-#end
-
-#if cpp
-import sys.thread.Thread;
-#end
-
 using StringTools;
 
 class WarningState extends MusicBeatState
@@ -41,17 +33,9 @@ class WarningState extends MusicBeatState
 	var dropText:FlxText;
 	var warningMusic:FlxSound;
 
-    override  function create():Void
+    override function create():Void
 	{
-        DiscordClient.changePresence("Inside The Opening Menu", null);
-
-        FlxG.sound.music.stop();
-        warningMusic = new FlxSound().loadEmbedded(Paths.music("PauseTheme-Soft", "shared"), true, true);
-		warningMusic.volume = 0;
-		warningMusic.play(false, FlxG.random.int(0, Std.int(warningMusic.length / 2)));
-		
-		FlxG.sound.list.add(warningMusic);
-
+	
         var pic:FlxSprite = new FlxSprite(-150, -50).loadGraphic(Paths.image('Not_Safe_Warning'));
 		pic.setGraphicSize(Std.int(pic.width * .9));
         pic.alpha = 0;
@@ -74,19 +58,24 @@ class WarningState extends MusicBeatState
 		if (warningMusic.volume < 0.3)
 			warningMusic.volume += 0.01 * elapsed;
 			
-        dropText.text = "Warning!
-This mod handles topics that some may find triggering.
-It is possible to play the mod safely by pressing SHIFT to skip dialogue.
-Triggers may include:
-Implied domestic abuse,
-Physical signs of domestic abuse,
-PTSD,
-Mentions of Pico’s School,
-If you are a victim of domestic violence, remember that you aren’t alone.
-Enjoy the story.
-(Press any key to continue)";
+        dropText.text = "Aviso!
+Este mod trata de tópicos que alguns podem achar desencadeantes.
+É possível jogar o mod com segurança pressionando SHIFT para pular o diálogo.
+Os gatilhos podem incluir:
+Abuso doméstico implícito,
+Sinais físicos de violência doméstica,
+TEPT,
+Menções à Pico's School,
+Se você é vítima de violência doméstica, lembre-se de que não está sozinho.
+Aproveite a história.
+(Pressione qualquer tecla para continuar)";
         dropText.visible = true;
         dropText.screenCenter();
+        
+        #if mobile
+		addVirtualPad(NONE, A);
+		#end
+		
          if (FlxG.keys.justPressed.ANY)
 		{
             FlxG.sound.music.stop();
