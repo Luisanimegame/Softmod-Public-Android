@@ -15,8 +15,6 @@ import flixel.util.FlxColor;
 import lime.utils.Assets;
 import flixel.addons.transition.FlxTransitionableState;
 
-import Discord.DiscordClient;
-
 using StringTools;
 
 class CreditsMenu extends MusicBeatState
@@ -91,9 +89,6 @@ class CreditsMenu extends MusicBeatState
 		//	FlxG.sound.playMusic(Paths.inst('whale-waltz'));
 		//}
 		
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Inside The Credits Menu...", null);
-
 		if(!FlxG.sound.music.playing){
 			FlxG.sound.playMusic(Paths.music("SoftConfig", "shared"));
 		}
