@@ -1150,17 +1150,6 @@ class PlayState extends MusicBeatState
 
 		}
 
-		if (loadRep)
-		{
-			FlxG.watch.addQuick('rep rpesses',repPresses);
-			FlxG.watch.addQuick('rep releases',repReleases);
-			
-			FlxG.save.data.botplay = true;
-			FlxG.save.data.scrollSpeed = rep.replay.noteSpeed;
-			FlxG.save.data.downscroll = rep.replay.isDownscroll;
-			// FlxG.watch.addQuick('Queued',inputsQueued);
-		}
-
 		doof = new DialogueBox(false, dialogue);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
@@ -1579,6 +1568,10 @@ class PlayState extends MusicBeatState
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
+		
+		#if mobile
+		mobileControls.visible = true;
+		#end
 
 		talking = false;
 		startedCountdown = true;
@@ -2239,7 +2232,7 @@ class PlayState extends MusicBeatState
 		if (!FlxG.save.data.accuracyDisplay)
 			scoreTxt.text = "Score: " + songScore;
 
-		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
+		if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
 			persistentDraw = true;
@@ -2883,6 +2876,9 @@ class PlayState extends MusicBeatState
 			canPause = false;
 			FlxG.sound.music.volume = 0;
 			vocals.volume = 0;
+			#if mobile
+			mobileControls.visible = false;
+			#end
 			if (SONG.validScore)
 			{
 				#if !switch
