@@ -51,7 +51,7 @@ class WarningState extends MusicBeatState
         FlxTween.tween(dropText, {alpha: 1}, 1.2, {ease: FlxEase.circOut});
         
         #if mobile
-		addVirtualPad(NONE, A);
+		addVirtualPad(NONE, B);
 		#end
        
     }
@@ -75,11 +75,11 @@ Aproveite a história.
 (Pressione qualquer tecla para continuar)";
         dropText.visible = true;
         dropText.screenCenter();
-         if (FlxG.keys.justPressed.ANY)
-		{
+		 if (controls.BACK)
+        {
             FlxG.sound.music.stop();
             FlxG.switchState(new MainMenuState());
-		}
+        }
        
     }
 }
