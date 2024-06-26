@@ -73,7 +73,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Building
-        run: haxelib run lime build android
+        run: haxelib run lime build android -final
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
@@ -113,6 +113,6 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
-          name: Soft Android Build
+          name: Soft Droid Port
           path: export/release/android/bin/app/build/outputs/apk/debug
           if-no-files-found: warn
