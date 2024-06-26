@@ -61,9 +61,6 @@ class TitleState extends MusicBeatState
 		
 		PlayerSettings.init();
 
-		#if windows
-		DiscordClient.initialize();
-
 		Application.current.onExit.add (function (exitCode) {
 			DiscordClient.shutdown();
 		 });

@@ -15,10 +15,6 @@ import flixel.util.FlxTimer;
 import io.newgrounds.NG;
 import lime.app.Application;
 
-#if windows
-import Discord.DiscordClient;
-#end
-
 using StringTools;
 
 class MainMenuState extends MusicBeatState
@@ -51,10 +47,7 @@ class MainMenuState extends MusicBeatState
 	override function create()
 	{
 		#if windows
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
-		#end
-
+		
 		if(!FlxG.sound.music.playing)
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		
@@ -133,9 +126,9 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 		
-		#if mobile
-		addVirtualPad(UP_DOWN, A_B);
-		#end
+		#if android
+        addVirtualPad(UP_DOWN, A_B);
+        #end
 
 		super.create();
 	}

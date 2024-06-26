@@ -1569,9 +1569,10 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 		
-		#if mobile
-		mobileControls.visible = true;
-		#end
+		#if android
+        addAndroidControls();
+        androidControls.visible = true;
+        #end	
 
 		talking = false;
 		startedCountdown = true;
@@ -2232,7 +2233,7 @@ class PlayState extends MusicBeatState
 		if (!FlxG.save.data.accuracyDisplay)
 			scoreTxt.text = "Score: " + songScore;
 
-		if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
+		if (controls.PAUSE #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
 			persistentDraw = true;
@@ -2876,9 +2877,6 @@ class PlayState extends MusicBeatState
 			canPause = false;
 			FlxG.sound.music.volume = 0;
 			vocals.volume = 0;
-			#if mobile
-			mobileControls.visible = false;
-			#end
 			if (SONG.validScore)
 			{
 				#if !switch

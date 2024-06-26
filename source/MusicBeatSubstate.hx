@@ -3,9 +3,8 @@ package;
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
 import flixel.FlxSubState;
-#if mobile
-import mobile.flixel.FlxVirtualPad;
-import flixel.FlxCamera;
+#if android
+import android.flixel.FlxVirtualPad;
 import flixel.input.actions.FlxActionInput;
 import flixel.util.FlxDestroyUtil;
 #end
@@ -27,38 +26,35 @@ class MusicBeatSubstate extends FlxSubState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 		
-	#if mobile
+	#if android
 	var virtualPad:FlxVirtualPad;
-	var trackedInputsVirtualPad:Array<FlxActionInput> = [];
+	var trackedinputsUI:Array<FlxActionInput> = [];
 
 	public function addVirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
-		if (virtualPad != null)
-			removeVirtualPad();
-
 		virtualPad = new FlxVirtualPad(DPad, Action);
 		add(virtualPad);
 
 		controls.setVirtualPadUI(virtualPad, DPad, Action);
-		trackedInputsVirtualPad = controls.trackedInputsUI;
-		controls.trackedInputsUI = [];
+		trackedinputsUI = controls.trackedinputsUI;
+		controls.trackedinputsUI = [];
 	}
 
 	public function removeVirtualPad()
 	{
-		if (trackedInputsVirtualPad != [])
-			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
+		if (trackedinputsUI != [])
+			controls.removeFlxInput(trackedinputsUI);
 
 		if (virtualPad != null)
 			remove(virtualPad);
 	}
 
-	public function addVirtualPadCamera(DefaultDrawTarget:Bool = true)
+	public function addPadCamera()
 	{
 		if (virtualPad != null)
 		{
-			var camControls:FlxCamera = new FlxCamera();
-			FlxG.cameras.add(camControls, DefaultDrawTarget);
+			var camControls = new flixel.FlxCamera();
+			FlxG.cameras.add(camControls, false);
 			camControls.bgColor.alpha = 0;
 			virtualPad.cameras = [camControls];
 		}
@@ -67,14 +63,14 @@ class MusicBeatSubstate extends FlxSubState
 
 	override function destroy()
 	{
-		#if mobile
-		if (trackedInputsVirtualPad != [])
-			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
+		#if android
+		if (trackedinputsUI != [])
+			controls.removeFlxInput(trackedinputsUI);
 		#end
 
 		super.destroy();
 
-		#if mobile
+		#if android
 		if (virtualPad != null)
 		{
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
