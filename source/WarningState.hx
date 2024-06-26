@@ -49,11 +49,6 @@ class WarningState extends MusicBeatState
 		add(dropText);
         FlxTween.tween(pic, {alpha: 1}, 1.2, {ease: FlxEase.circOut});
         FlxTween.tween(dropText, {alpha: 1}, 1.2, {ease: FlxEase.circOut});
-        
-        #if mobile
-		addVirtualPad(NONE, B);
-		#end
-       
     }
 
 
