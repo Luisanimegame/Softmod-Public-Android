@@ -308,79 +308,80 @@ class DialogueBox extends FlxSpriteGroup
 	var dialogueStarted:Bool = false;
 
 	override function update(elapsed:Float)
-	{
-		if (cutsceneImage.alpha < 1)
-			cutsceneImage.alpha += 1 * elapsed;
-			
-		// HARD CODING CUZ IM STUPDI
-		if (PlayState.SONG.song.toLowerCase() == 'roses')
-			portraitLeft.visible = false;
-		if (PlayState.SONG.song.toLowerCase() == 'thorns')
-		{
-			portraitLeft.color = FlxColor.BLACK;
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
-		
-		dropText.text = swagDialogue.text;
+    {
+        if (cutsceneImage.alpha < 1)
+            cutsceneImage.alpha += 1 * elapsed;
 
-		
-		
-		
-		if (box.animation.curAnim != null)
-		{
-			if (box.animation.curAnim.name == 'normalOpen' && box.animation.curAnim.finished)
-			{
-				box.animation.play('normal');
-				dialogueOpened = true;
-			}
-		}
-		//portraitIMPS.y = 205;
-		//if (curAnim == "imps") portraitIMPS.y = 220;
-		if (dialogueOpened && !dialogueStarted)
-		{
-			startDialogue();
-			dialogueStarted = true;
-		}
+        // HARD CODING CUZ IM STUPDI
+        if (PlayState.SONG.song.toLowerCase() == 'roses')
+            portraitLeft.visible = false;
+        if (PlayState.SONG.song.toLowerCase() == 'thorns')
+        {
+            portraitLeft.color = FlxColor.BLACK;
+            swagDialogue.color = FlxColor.WHITE;
+            dropText.color = FlxColor.BLACK;
+        }
+        
+        dropText.text = swagDialogue.text;
 
-		if(FlxG.keys.justPressed.SHIFT && !isEnding){
+        if (box.animation.curAnim != null)
+        {
+            if (box.animation.curAnim.name == 'normalOpen' && box.animation.curAnim.finished)
+            {
+                box.animation.play('normal');
+                dialogueOpened = true;
+            }
+        }
+        //portraitIMPS.y = 205;
+        //if (curAnim == "imps") portraitIMPS.y = 220;
+        if (dialogueOpened && !dialogueStarted)
+        {
+            startDialogue();
+            dialogueStarted = true;
+        }
 
-			isEnding = true;
-			endDialogue();
+        if(FlxG.keys.justPressed.SHIFT #if android || FlxG.android.justReleased.BACK #end && !isEnding){
+            isEnding = true;
+            endDialogue();
+        }
 
-		}
+        #if mobile
+        var jusTouched:Bool = false;
 
-		if (FlxG.keys.justPressed.ANY && dialogueStarted == true && canAdvance && !isEnding)
-		{
-			remove(dialogue);
-			canAdvance = false;
+        for (touch in FlxG.touches.list)
+          if (touch.justPressed)
+            jusTouched = true;
+        #end
 
-			new FlxTimer().start(0.15, function(tmr:FlxTimer)
-			{
-				canAdvance = true;
-			});
+        if (FlxG.keys.justPressed.ANY #if mobile || jusTouched #end && dialogueStarted == true && canAdvance && !isEnding)
+        {
+            remove(dialogue);
+            canAdvance = false;
 
-			FlxG.sound.play(Paths.sound('clickText'), 0.8);
+            new FlxTimer().start(0.15, function(tmr:FlxTimer)
+                canAdvance = true);
 
-			if (dialogueList[1] == null && dialogueList[0] != null)
-			{
-				if (!isEnding)
-				{
-					isEnding = true;
-					endDialogue();
-				}
-			}
-			else
-			{
-				dialogueList.remove(dialogueList[0]);
-				startDialogue();
-			}
-		}
+            FlxG.sound.play(Paths.sound('clickText'), 0.8);
 
-		super.update(elapsed);
-	}
+            if (dialogueList[1] == null && dialogueList[0] != null)
+            {
+                if (!isEnding)
+                {
+                    isEnding = true;
+                    endDialogue();
+                }
+            }
+            else
+            {
+                dialogueList.remove(dialogueList[0]);
+                startDialogue();
+            }
+        }
 
-	var isEnding:Bool = false;
+        super.update(elapsed);
+    }
+
+    var isEnding:Bool = false;
 
 	function endDialogue(){
 
