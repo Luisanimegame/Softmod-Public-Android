@@ -1239,7 +1239,6 @@ class PlayState extends MusicBeatState
 		}
 
 		add(camFollow);
-		}
 
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
 
