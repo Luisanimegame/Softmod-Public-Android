@@ -249,9 +249,6 @@ class PlayState extends MusicBeatState
 	{
 		instance = this;
 		
-		if (FlxG.save.data.fpsCap > 290)
-			(cast (Lib.current.getChildAt(0), Main)).setFPSCap(800);
-		
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -1242,12 +1239,6 @@ class PlayState extends MusicBeatState
 		}
 
 		add(camFollow);
-
-		if(pain==false){
-		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()));
-		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
-		FlxG.camera.zoom = defaultCamZoom;
-		FlxG.camera.focusOn(camFollow.getPosition());
 		}
 
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
