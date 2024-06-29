@@ -81,7 +81,7 @@ class Main extends Sprite
 
 		addChild(game);
 
-		#if !android
+		#if android
 		fpsCounter = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsCounter);
 		toggleFPS(FlxG.save.data.fps);
