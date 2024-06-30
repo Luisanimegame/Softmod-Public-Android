@@ -46,7 +46,7 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-		#if windows
+		#if android
 		
 		if(!FlxG.sound.music.playing)
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
