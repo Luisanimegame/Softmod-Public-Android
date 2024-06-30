@@ -29,6 +29,12 @@ class CreditsMenu extends MusicBeatState
 	public static var credits:Array<String> = [
 	"Press Enter For Social:",
 	'',
+	'PORTER:',
+	'Gaby Wuzzy',
+	'',
+	'Para o DGL:',
+	'cade meu legalmix? eu necessito dele agora',
+	'',
 	'DIRECTOR:',
 	'Tamacoochi ',
 	'',
@@ -135,6 +141,10 @@ class CreditsMenu extends MusicBeatState
 		// add(selector);
 
 		var swag:Alphabet = new Alphabet(1, 0, "swag");
+		
+		#if android
+        addVirtualPad(LEFT_FULL, A_B);
+        #end
 
 		super.create();
 	}
