@@ -27,7 +27,7 @@ class CreditsMenu extends MusicBeatState
 	var boolList = StoryMenuState.getLocks();
 	
 	public static var credits:Array<String> = [
-	"Preguiça de por os links, sorry",
+	"Preguiça de por os links",
 	'',
 	'PORTER:',
 	'Gaby Wuzzy',
@@ -35,7 +35,7 @@ class CreditsMenu extends MusicBeatState
 	'Para o DGL:',
 	'cade meu legalmix? eu necessito dele agora',
 	'',
-	'de aqui em diante não funciona',
+	'de aqui em diante nao funciona',
 	'procure os donos na internet:D',
 	'',
 	'DIRECTOR:',
@@ -87,7 +87,12 @@ class CreditsMenu extends MusicBeatState
 	'Kartin Crew',
 	'Church Soop',
 	'My beloved',
-	'Eboymode'
+	'Eboymode',
+	
+	'PESSOAS MARAVILHOSAS:',
+	'IDKLOOL',
+	'FNF BR',
+	'SINIXSKR',
 	];
 
 	override function create()
