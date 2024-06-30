@@ -1366,7 +1366,6 @@ class PlayState extends MusicBeatState
 		
 		#if android
         addAndroidControls();
-        androidControls.visible = true;
         #end	
 
 		startingSong = true;
@@ -1582,6 +1581,7 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 
 		camHUD.visible = true;
+		#if android androidControls.visible = true; #end
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
