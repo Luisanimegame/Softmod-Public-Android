@@ -27,13 +27,16 @@ class CreditsMenu extends MusicBeatState
 	var boolList = StoryMenuState.getLocks();
 	
 	public static var credits:Array<String> = [
-	"Press Enter For Social:",
+	"Preguiça de por os links, sorry",
 	'',
 	'PORTER:',
 	'Gaby Wuzzy',
 	'',
 	'Para o DGL:',
 	'cade meu legalmix? eu necessito dele agora',
+	'',
+	'de aqui em diante não funciona',
+	'procure os donos na internet:D',
 	'',
 	'DIRECTOR:',
 	'Tamacoochi ',
@@ -192,114 +195,11 @@ class CreditsMenu extends MusicBeatState
 				case 1:
 				case 2:
 				case 3:
-					fancyOpenURL("https://twitter.com/tamacoochi");
+					fancyOpenURL("https://youtube.com/@gabewuzx?si=5vCAmKI0eOXzKwpB");
 				case 4:
 				case 5:
 				case 6:
-					fancyOpenURL("https://twitter.com/drizzleastra");
-				case 7:
-					fancyOpenURL("Blu https://twitter.com/starrie_blu");
-				case 8:
-					fancyOpenURL("https://twitter.com/peep_face");
-				case 9:
-					fancyOpenURL("https://elikapika.newgrounds.com/");
-				case 10:
-					fancyOpenURL("https://twitter.com/CitrusSlugLuca");
-				case 11:
-					fancyOpenURL("https://www.youtube.com/channel/UCdkHxFQnvyIKHSPcRRu-9PQ");
-				case 12:
-					fancyOpenURL("https://twitter.com/teradriive");
-				case 13:
-					fancyOpenURL("https://twitter.com/HexerRush");
-				case 14:
-					fancyOpenURL("https://twitter.com/LIYAZURE");
-				case 15:
-					fancyOpenURL("https://twitter.com/VanilaSwirlx");
-				case 16:
-				case 17:
-				case 18:
-					fancyOpenURL("Blu https://twitter.com/starrie_blu");
-				case 19:
-					fancyOpenURL("https://twitter.com/MegaBlade");
-				case 20:
-					fancyOpenURL("https://www.youtube.com/channel/UCPJgxE6emiRHcjDn5IIjH3Q");
-				case 21:
-					fancyOpenURL("https://twitter.com/hamm_slamm");
-				case 22:
-					fancyOpenURL("https://www.youtube.com/c/StardustTunes");
-
-				case 23:
-						if(FlxG.random.bool(0.1) || FlxG.keys.pressed.PAGEDOWN){
-
-						//i am going to beat you to death
-						var scary:FlxSprite = new FlxSprite().loadGraphic(BitmapData.fromBase64(R.r, "image/png"));
-						scary.setGraphicSize(Std.int(scary.width * 2));
-						scary.updateHitbox();
-						add(scary);
-
-						FlxG.sound.music.stop();
-
-						new FlxTimer().start(1, function(timer:FlxTimer)
-						{
-							System.exit(0);
-						});
-
-					}
-					else{
-						fancyOpenURL("https://twitter.com/helpme_thebigt");
-					}
-				case 24:
-				case 25:
-					if(boolList[5] == true){
-						FlxG.switchState(new CheckText());
-						fancyOpenURL("https://github.com/mattsodes1031/Softmod-Public");
-					}
-					else
-						fancyOpenURL("https://github.com/mattsodes1031/Softmod-Public");
-				case 26:
-					fancyOpenURL("https://twitter.com/Disky_1");
-				case 27:
-					fancyOpenURL("https://twitter.com/starrie_blu");
-				case 28:
-					fancyOpenURL("https://twitter.com/Smokey_5_");
-				case 29:
-					if(FlxG.random.bool(0.1) || FlxG.keys.pressed.PAGEDOWN){
-
-						//i am going to beat you to death
-						var scary:FlxSprite = new FlxSprite().loadGraphic(BitmapData.fromBase64(R.r, "image/png"));
-						scary.setGraphicSize(Std.int(scary.width * 2));
-						scary.updateHitbox();
-						add(scary);
-
-						FlxG.sound.music.stop();
-						FlxG.sound.play('assets/data/philly/confirmSound.ogg',2);
-						new FlxTimer().start(1, function(timer:FlxTimer)
-						{
-							System.exit(0);
-						});
-
-					}
-					else{
-						fancyOpenURL("https://twitter.com/helpme_thebigt");
-					}
-				case 30:
-					fancyOpenURL("https://www.youtube.com/channel/UCMIGpjyL6H__IFp7emWErlw");
-				case 31:
-					fancyOpenURL("https://twitter.com/ash__i_guess_");
-				case 32:
-					fancyOpenURL("https://twitter.com/Clowfoe");
-				case 33:
-				case 34:
-				case 35:
-					fancyOpenURL("https://www.youtube.com/channel/UCMIGpjyL6H__IFp7emWErlw");
-				case 36:
-					fancyOpenURL("https://www.youtube.com/channel/UCPJgxE6emiRHcjDn5IIjH3Q");
-				case 37:
-					fancyOpenURL("https://twitter.com/EthanTheDoodler");
-				case 38:
-					fancyOpenURL("https://twitter.com/cval_brown");
-				case 39:
-					fancyOpenURL("https://twitter.com/alienshea");
+					fancyOpenURL("https://youtu.be/DowEPBsCVoY?si=gL0NNpCln7Qc0Ew2");
 				
 				default:
 					trace(curSelected);
