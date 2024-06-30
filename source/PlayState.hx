@@ -2042,7 +2042,7 @@ class PlayState extends MusicBeatState
 			}
 
 			babyArrow.animation.play('static');
-			babyArrow.x += 50;
+			babyArrow.x += 100;
 			babyArrow.x += ((FlxG.width / 2) * player);
 			
 			cpuStrums.forEach(function(spr:FlxSprite)
